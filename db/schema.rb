@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917234657) do
+ActiveRecord::Schema.define(version: 20170918000044) do
 
-  create_table "lens", force: :cascade do |t|
+  create_table "lenses", force: :cascade do |t|
     t.string "lens_id"
     t.string "image_url"
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lens_id"], name: "index_lens_on_lens_id"
+    t.index ["lens_id"], name: "index_lenses_on_lens_id"
   end
 
   create_table "specs", force: :cascade do |t|
