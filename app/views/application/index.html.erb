@@ -1,2 +1,2 @@
-<div id="initial-data" data-initial-data="<%= { lenses: @lenses.as_json }.to_json %>"></div>
+<div id="initial-data" data-initial-data="<%= { lenses: @lenses.as_json(include: [:specs]) }.to_json %>"></div>
 <div class="react-container container"></div>
