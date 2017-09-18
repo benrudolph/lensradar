@@ -2,26 +2,39 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
+import moment from 'moment/moment'
+import $ from 'jquery/dist/jquery'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { createStore, applyMiddleware } from 'redux'
+import { createLogger } from 'redux-logger'
+import { Provider } from 'react-redux'
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
+window.jQuery = $
+window.$ = $
+window.moment = moment
 
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+let store;
+const loggerMiddleware = createLogger()
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  const initialData = $('#initial-data').data().initialData
+  store = createStore(
+    (store) => { return store },
+    initialData,
+    applyMiddleware(
+      loggerMiddleware,
+    )
+  )
+
   ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
+    <Provider store={store}>
+      <div>Ben</div>
+    </Provider>,
+    $('.react-container')[0]
   )
 })
 
