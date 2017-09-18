@@ -12,6 +12,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux'
 
+import MainHeader from 'global/components/main_header'
+
 window.jQuery = $
 window.$ = $
 window.moment = moment
@@ -32,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <div>Ben</div>
+      <div>
+        <MainHeader />
+        <div className="container-fluid"></div>
+      </div>
     </Provider>,
     $('.react-container')[0]
   )
