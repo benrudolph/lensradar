@@ -8,10 +8,8 @@ require 'csv'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-CSV.foreach('db/fixtures/lens.csv', headers: true) do |row|
-  Lens.create(row.to_h)
-end
+rows = CSV.foreach('db/fixtures/lens.csv', headers: true)
+Lens.create(rows.map { |r| r.to_h })
 
-CSV.foreach('db/fixtures/specs.csv', headers: true) do |row|
-  Spec.create(row.to_h)
-end
+rows = CSV.foreach('db/fixtures/specs.csv', headers: true)
+Spec.create(rows.map { |r| r.to_h })
